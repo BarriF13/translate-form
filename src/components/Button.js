@@ -21,19 +21,25 @@ import ColorContext from '../contexts/ColorContext';
 //------------ using Consumer method
 export class Button extends Component {
 
+  renderSubmit(value) {
+    return value === 'english' ? 'Submit' : 'Voorleggen';
+  }
+  renderButton(color) {
+    return (
+      <button className={`ui button ${color}`}>
+        <LanguageContext.Consumer>
+
+          {(value) => this.renderSubmit(value)}
+        </LanguageContext.Consumer>
+      </button>
+    );
+  }
   //we are passing a child to a consumer --here is value 
   render() {
 
     return (
       <ColorContext.Consumer >
-        {(color) =>
-          <button className={`ui button ${color}`}>
-            <LanguageContext.Consumer>
-
-              {(value) => value === 'english' ? 'Submit' : 'Voorleggen'}
-            </LanguageContext.Consumer>
-          </button>
-        }
+        {(color) => this.renderButton(color)}
 
       </ColorContext.Consumer>
     )
