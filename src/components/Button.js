@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LanguageContext from '../contexts/LanguageContext';
+import ColorContext from '../contexts/ColorContext';
 
 // export class Button extends Component {
 //   //-----it is a property and should only name contextType--static puts property straight to the class 
@@ -19,17 +20,22 @@ import LanguageContext from '../contexts/LanguageContext';
 
 //------------ using Consumer method
 export class Button extends Component {
-  
+
   //we are passing a child to a consumer --here is value 
   render() {
 
     return (
-      <button className="ui button primary ">
-        <LanguageContext.Consumer>
+      <ColorContext.Consumer >
+        {(color) =>
+          <button className={`ui button ${color}`}>
+            <LanguageContext.Consumer>
 
-          {(value) => value === 'english' ? 'Submit' : 'Voorleggen'}
-        </LanguageContext.Consumer>
-      </button>
+              {(value) => value === 'english' ? 'Submit' : 'Voorleggen'}
+            </LanguageContext.Consumer>
+          </button>
+        }
+
+      </ColorContext.Consumer>
     )
   }
 }
