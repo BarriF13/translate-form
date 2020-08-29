@@ -25,6 +25,7 @@ export class App extends Component {
           <ColorContext.Provider value='teal'>
             <UserCreate />
           </ColorContext.Provider>
+          
         </LanguageStore>
         {/* </LanguageContext.Provider> */}
         {/* {this.state.language} */}
